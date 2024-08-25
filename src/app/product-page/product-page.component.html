@@ -1,0 +1,124 @@
+<div class="card mb-3 mx-auto" style="max-width: 900px">
+  <div class="row g-0">
+    <div
+      class="col-md-6 d-flex flex-column justify-content-center align-items-center"
+    >
+      <button
+        class="btn btn-outline-secondary border-0 position-absolute top-0 end-0 m-2"
+        (click)="navigateHome()"
+      >
+        X
+      </button>
+      <img
+        [src]="selectedImage || productDetails.thumbnail"
+        class="img-fluid rounded-start mb-3"
+        alt="Product Image"
+        style="max-width: 100%"
+      />
+      <div class="thumbnail-images d-flex justify-content-center">
+        <img
+          *ngFor="let image of productDetails.images"
+          [src]="image"
+          alt="{{ productDetails.title }}"
+          class="img-thumbnail m-1 bg-opacity-25 bg-secondary"
+          (click)="selectImage(image)"
+          [ngClass]="{ selected: image == selectedImage }"
+          style="
+            cursor: pointer;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+          "
+        />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card-body">
+        <h5 class="card-title fw-bold">{{ productDetails.title }}</h5>
+        <p class="card-text text-muted">{{ productDetails.description }}</p>
+        <div class="rating">
+          <fa-icon
+            class="fa fa-star"
+            [icon]="faStar"
+            [ngClass]="{ checked: productDetails.rating >= 1 }"
+          ></fa-icon>
+          <fa-icon
+            class="fa fa-star"
+            [icon]="faStar"
+            [ngClass]="{ checked: productDetails.rating >= 2 }"
+          ></fa-icon>
+          <fa-icon
+            class="fa fa-star"
+            [icon]="faStar"
+            [ngClass]="{ checked: productDetails.rating >= 3 }"
+          ></fa-icon>
+          <fa-icon
+            class="fa fa-star"
+            [icon]="faStar"
+            [ngClass]="{ checked: productDetails.rating >= 4 }"
+          ></fa-icon>
+          <fa-icon
+            class="fa fa-star"
+            [icon]="faStar"
+            [ngClass]="{ checked: productDetails.rating >= 5 }"
+          ></fa-icon>
+          <span class="text-muted"> ({{ productDetails.reviews.length }})</span>
+        </div>
+        <hr />
+        <div class="price-info my-4">
+          <h4 class="price fw-bold "[innerHTML]="productDetails.price| discount : productDetails.discountPercentage"></h4>
+          <p class="financing-info text-muted">After Discount</p>
+        </div>
+        <hr />
+        <div class="stock-info">
+          <span class="badge" [ngClass]="{'badge-success': productDetails.stock > 0,'badge-danger': productDetails.stock === 0}">
+            {{ productDetails.stock > 0 ? "In stock" : "Out of stock" }}
+          </span>
+          <p class="my-4">More Information</p>
+          <div class="tags">
+            <span
+              class="badge bg-primary p-2 me-2"
+              *ngFor="let tag of productDetails.tags"
+              >{{ tag }}</span
+            >
+          </div>
+        </div>
+        <hr />
+        <div class="quantity-control d-flex align-items-center my-4">
+          <button
+            class="btn btn-outline-primary fs-4"
+            type="button"
+            (click)="decreaseQuantity(productDetails.id)"
+          >
+            -
+          </button>
+          <input
+            type="text"
+            class="form-control text-center mx-2 rounded-5 border-0"
+            [value]="quantities[productDetails?.id] || 0"
+            readonly
+            style="max-width: 60px"
+          />
+          <button
+            class="btn btn-outline-primary fs-4"
+            type="button"
+            (click)="increaseQuantity(productDetails.id)"
+          >
+            +
+          </button>
+          <span class="text-danger fw-bold ms-3"
+            >Only {{ productDetails.stock }} Items Left! Don't miss it</span
+          >
+        </div>
+        <div class="d-flex mt-3">
+          <button class="btn btn-success me-2" (click)="buyNow()">
+            Buy Now
+          </button>
+          <button class="btn btn-outline-primary" (click)="addToCart()">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

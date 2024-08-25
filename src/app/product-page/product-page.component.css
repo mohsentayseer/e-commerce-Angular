@@ -1,0 +1,36 @@
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+  .card-text {
+    font-size: 1rem;
+  }
+  .rating .fa-star {
+    font-size: 1.25rem;
+    color: #d1d1d1;
+  }
+  .rating .fa-star.checked {
+    color: #f5c518;
+  }
+  .badge-success {
+    background-color: #28a745;
+  }
+  .badge-danger {
+    background-color: #dc3545;
+  }
+  .price {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  .btn {
+    font-size: 1rem;
+  }
+  .quantity-control .btn {
+    font-size: 1.25rem;
+  }
+  .tags .badge {
+    font-size: 0.875rem;
+  }
+
+
+ 

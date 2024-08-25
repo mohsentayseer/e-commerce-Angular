@@ -1,0 +1,57 @@
+<a [routerLink]="['Product-page']" class="text-decoration-none" (click)="handleRedirect(product.id)">
+  <div class="card d-flex flex-column align-items-center" style="width: 100%; max-width: 20rem;">
+    <img [src]="product.thumbnail" class="card-img-top" alt="{{ product.title }}" style="object-fit: cover; height: 200px; width: 100%;" />
+    <div class="card-body">
+      <div class="row mb-2">
+        <div class="col-12 text-center">
+          <span
+            class="badge"
+            [ngClass]="{
+              'badge-success': product.stock > 0,
+              'badge-danger': product.stock === 0
+            }"
+          >
+            {{ product.stock > 0 ? "In stock" : "Out of stock" }}
+          </span>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <h6 class="col-8">{{ product.title }}</h6>
+        <h6 class="col-4 text-right">{{ product.price }} EGP</h6>
+        <p class="col-12">{{ product.description }}</p>
+      </div>
+      <div class="row mb-3 text-center">
+        <div class="col-12">
+          <fa-icon
+            class="fa fa-star"
+            [icon]="fastar"
+            [ngClass]="{ checked: product.rating >= 1 }"
+          ></fa-icon>
+          <fa-icon
+            class="fa fa-star"
+            [icon]="fastar"
+            [ngClass]="{ checked: product.rating >= 2 }"
+          ></fa-icon>
+          <fa-icon
+            class="fa fa-star"
+            [icon]="fastar"
+            [ngClass]="{ checked: product.rating >= 3 }"
+          ></fa-icon>
+          <fa-icon
+            class="fa fa-star"
+            [icon]="fastar"
+            [ngClass]="{ checked: product.rating >= 4 }"
+          ></fa-icon>
+          <fa-icon
+            class="fa fa-star"
+            [icon]="fastar"
+            [ngClass]="{ checked: product.rating >= 5 }"
+          ></fa-icon>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="#" class="btn btn-outline-primary rounded-5">Add to cart</a>
+      </div>
+    </div>
+  </div>
+</a>

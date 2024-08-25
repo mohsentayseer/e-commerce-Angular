@@ -1,0 +1,17 @@
+.fa-star {
+    font-size: 1rem;
+    color: #d1d1d1; 
+  }
+  .fa-star.checked {
+    color: #71aff7; 
+  }
+  .badge-success {
+    background-color: green;
+  }
+  .badge-danger {
+    background-color: red;
+  }
+  .text-right {
+    text-align: right;
+  }
+  

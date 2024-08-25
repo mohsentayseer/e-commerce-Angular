@@ -1,0 +1,54 @@
+<form #loginform="ngForm"  (ngSubmit)="handleSubmitForm(loginform)">
+  <div class="card p-5 mx-auto "style="width:30vw" >
+    <div class="m-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        name="email"
+        ngModel
+        #email="ngModel"
+        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+        required
+      />
+      @if(email.touched && email.invalid){
+      <div class="form-text text-danger">
+        @if(email?.hasError('required')){
+        <small>Required</small>
+        } @if(email?.hasError('pattern')){
+        <small>please enter correct email address</small>
+        }
+      </div>
+      }
+    </div>
+    <div class="m-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        name="password"
+        ngModel
+        #password="ngModel"
+        required
+      />
+      @if(password.touched && password.invalid){
+      <div class="form-text text-danger">
+        @if(password.hasError('required')){
+        <small>Required</small>
+        }
+      </div>
+      }
+    </div>
+
+    <button type="submit" class="btn btn-outline-primary m-3">Submit</button>
+    <p class="fs-6 my-3 mx-auto fw-bold text-black text-c">
+      Don't Have Account Please
+      <a [routerLink]="['/Register']" routerLinkActive="router-link-active"
+        >Register</a
+      >
+    </p>
+  </div>
+</form>

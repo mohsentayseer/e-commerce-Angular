@@ -1,0 +1,46 @@
+/* Navbar background color */
+.navbar {
+    background-color: #f8f9fa; /* Light background */
+  }
+  
+  /* Brand styling */
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  
+  /* Navbar links styling */
+  .nav-link {
+    margin-right: 1rem;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-link:hover {
+    color: #007bff; /* Hover color */
+  }
+  
+  /* Active link styling */
+  .active-link {
+    color: orange !important; /* Active link color */
+  }
+  
+  /* Button styling */
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  
+  .btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+  }
+  
+  /* Badge styling */
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.25em 0.4em;
+  }
+  

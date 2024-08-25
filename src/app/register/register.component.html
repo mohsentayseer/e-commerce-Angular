@@ -1,0 +1,55 @@
+<div class="container mt-5">
+    <div class="card p-5 mx-auto" style="width: 30vw;">
+      
+      <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="m-3">
+            <label for="email" class="form-label">Email Address:</label>
+            <input id="email" formControlName="email" type="email" class="form-control">
+            <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid" class="form-text text-danger">
+              <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</div>
+              <div *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email format.</div>
+            </div>
+          </div>
+          <div class="m-3">
+            <label for="name" class="form-label">Name:</label>
+            <input id="name" formControlName="name" type="text" class="form-control">
+            <div *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid" class="form-text text-danger">
+              <div *ngIf="registerForm.get('name')?.errors?.['required']">Name is required.</div>
+            </div>
+          </div>
+          <div class="m-3">
+            <label for="username" class="form-label">Username:</label>
+            <input id="username" formControlName="username" type="text" class="form-control">
+            <div *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid" class="form-text text-danger">
+              <div *ngIf="registerForm.get('username')?.errors?.['required']">Username is required.</div>
+              <div *ngIf="registerForm.get('username')?.errors?.['pattern']">Username must not contain spaces.</div>
+            </div>
+          </div>
+          <div class="m-3">
+            <label for="password" class="form-label">Password:</label>
+            <input id="password" formControlName="password" type="password" class="form-control">
+            <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid" class="form-text text-danger">
+              <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</div>
+              <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</div>
+              <div *ngIf="registerForm.get('password')?.errors?.['pattern']">Password must contain at least one lowercase, one uppercase, one digit, and one special character.</div>
+            </div>
+          </div>
+          <div class="m-3">
+            <label for="confirmPassword" class="form-label">Confirm Password:</label>
+            <input id="confirmPassword" formControlName="confirmPassword" type="password" class="form-control">
+            <div *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid" class="form-text text-danger">
+              <div *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm password is required.</div>
+              <div *ngIf="registerForm.errors?.['passwordsMismatch']">Passwords do not match.</div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-outline-primary m-3" [disabled]="registerForm.invalid">Register</button>
+        </form>
+        <p class="fs-6 my-3 mx-auto fw-bold text-black text-c">
+          Already Have an Account? Please
+          <a [routerLink]="['/Login']" routerLinkActive="router-link-active">Login</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  
